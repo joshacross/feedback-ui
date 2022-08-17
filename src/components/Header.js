@@ -1,3 +1,9 @@
-export default function Header() {
-     return <h1>This is a header</h1>;
+function Header({ text }) {
+     return (
+          <div className='container'>
+               <h2>{text}</h2>
+          </div>
+     );
 }
+
+export default Header;
