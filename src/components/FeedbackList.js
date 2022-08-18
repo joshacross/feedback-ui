@@ -2,7 +2,7 @@ import FeedbackItem from './FeedbackItem';
 
 function FeedbackList({ feedback }) {
      if (!feedback || feedback.length === 0) {
-          <p>No Feedback Yet</p>;
+          return <p>No Feedback Yet</p>;
      }
 
      return (
