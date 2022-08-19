@@ -7,6 +7,9 @@ import FeedbackData from './data/FeedbackData';
 import FeedbackStats from './components/FeedbackStats';
 import FeedbackForm from './components/FeedbackForm';
 import AboutPage from './pages/AboutPage';
+import PostPage from './pages/PostPage';
+import { FeedbackProvider } from './context/FeedbackContext';
+import AboutIconLink from './components/AboutIconLink';
 
 function App() {
      const text = 'Feedback UI';
@@ -26,27 +29,32 @@ function App() {
      };
 
      return (
-          <Router>
-               <Header text={text} />
-               <div className='container'>
-                    <Routes>
-                         <Route
-                              exact
-                              path='/'
-                              element={
-                                   <>
-                                        <FeedbackForm handleAdd={addFeedback} />
-                                        <FeedbackStats feedback={feedback} />
-                                        <FeedbackList
-                                             feedback={feedback}
-                                             handleDelete={deleteFeedback}
-                                        />
-                                   </>
-                              }></Route>
-                         <Route path='/about' element={<AboutPage />} />
-                    </Routes>
-               </div>
-          </Router>
+          <FeedbackProvider>
+               <Router>
+                    <Header text={text} />
+                    <div className='container'>
+                         <Routes>
+                              <Route
+                                   exact
+                                   path='/'
+                                   element={
+                                        <>
+                                             <FeedbackForm
+                                                  handleAdd={addFeedback}
+                                             />
+                                             <FeedbackStats />
+                                             <FeedbackList
+                                                  handleDelete={deleteFeedback}
+                                             />
+                                        </>
+                                   }></Route>
+                              <Route path='/about' element={<AboutPage />} />
+                              <Route path='/post/*' element={<PostPage />} />
+                         </Routes>
+                         <AboutIconLink />
+                    </div>
+               </Router>
+          </FeedbackProvider>
      );
 }
 
