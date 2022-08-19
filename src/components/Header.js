@@ -8,13 +8,15 @@ function Header({ text, bgColor, textColor }) {
      };
 
      return (
-          <Link to='/'>
-               <header style={headerStyles}>
-                    <div className='container'>
+          <header style={headerStyles}>
+               <div className='container'>
+                    <Link
+                         to='/'
+                         style={{ textDecoration: 'none', color: '#ff6a95' }}>
                          <h2>{text}</h2>
-                    </div>
-               </header>
-          </Link>
+                    </Link>
+               </div>
+          </header>
      );
 }
 
