@@ -3,22 +3,18 @@ import Header from './components/Header';
 import FeedbackList from './components/FeedbackList';
 import FeedbackStats from './components/FeedbackStats';
 import FeedbackForm from './components/FeedbackForm';
-import AboutPage from './pages/AboutPage';
-import PostPage from './pages/PostPage';
-import { FeedbackProvider } from './context/FeedbackContext';
 import AboutIconLink from './components/AboutIconLink';
+import AboutPage from './pages/AboutPage';
+import { FeedbackProvider } from './context/FeedbackContext';
 
 function App() {
-     const text = 'Feedback UI';
-
      return (
           <FeedbackProvider>
                <Router>
-                    <Header text={text} />
+                    <Header />
                     <div className='container'>
                          <Routes>
                               <Route
-                                   exact
                                    path='/'
                                    element={
                                         <>
@@ -27,9 +23,10 @@ function App() {
                                              <FeedbackList />
                                         </>
                                    }></Route>
+
                               <Route path='/about' element={<AboutPage />} />
-                              <Route path='/post/*' element={<PostPage />} />
                          </Routes>
+
                          <AboutIconLink />
                     </div>
                </Router>

@@ -3,30 +3,15 @@ import { createContext, useState, useEffect } from 'react';
 const FeedbackContext = createContext();
 
 export const FeedbackProvider = ({ children }) => {
-     const [isLoading, setIsLoading] = useState(true);
-     const [feedback, setFeedback] = useState([
-          {
-               id: 1,
-               text: 'this is feedback item 1',
-               rating: 10,
-          },
-          {
-               id: 2,
-               text: 'this is feedback item 2',
-               rating: 10,
-          },
-          {
-               id: 3,
-               text: 'this is feedback item 3',
-               rating: 10,
-          },
-     ]);
+     const [isLoading, setIsLoading] = useState(false);
+     const [feedback, setFeedback] = useState([]);
      const [feedbackEdit, setFeedbackEdit] = useState({
           item: {},
           edit: false,
      });
 
      useEffect(() => {
+          console.log('bear');
           fetchFeedback();
      }, []);
 
@@ -78,8 +63,6 @@ export const FeedbackProvider = ({ children }) => {
           // NOTE: no need to spread data and item
           setFeedback(feedback.map((item) => (item.id === id ? data : item)));
 
-          // FIX: this fixes being able to add a feedback after editing
-          // credit to Jose https://www.udemy.com/course/react-front-to-back-2022/learn/lecture/29768200#questions/16462688
           setFeedbackEdit({
                item: {},
                edit: false,
@@ -111,36 +94,3 @@ export const FeedbackProvider = ({ children }) => {
 };
 
 export default FeedbackContext;
-
-// import { v4 as uuidv4 } from 'uuid';
-// import { createContext, useState } from 'react';
-// const FeedbackContext = createContext();
-
-// export const FeedbackProvider = ({ children }) => {
-//      const [feedback, setFeedback] = useState({
-//           id: 1,
-//           text: 'this is from context',
-//           rating: 10,
-//      });
-
-//      const addFeedback = (newFeedback) => {
-//           newFeedback.id = uuidv4();
-//           console.log(newFeedback);
-//           setFeedback([newFeedback, ...feedback]);
-//      };
-
-//      const deleteFeedback = (id) => {
-//           if (window.confirm('Are You Certain You Want To Delete???')) {
-//                setFeedback(feedback.filter((item) => item.id !== id));
-//           }
-//      };
-
-//      return (
-//           <FeedbackContext.Provider
-//                value={{ feedback, deleteFeedback, addFeedback }}>
-//                {children}
-//           </FeedbackContext.Provider>
-//      );
-// };
-
-// export default FeedbackContext;
