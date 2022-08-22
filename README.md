@@ -1,3 +1,11 @@
+# Feedback UI
+
+## Description
+
+Feedback UI is a responsive React Application built with a JSON server. Allows a user to rate 1-10, write a review, post, edit, delete, and update their review. Review stats are then calculated with the amount of reviews and the average rating.
+
+<img src="./src/components/assets/screenshot.png" alt="feedback UI interface showing the rating and post components">
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
